@@ -44,6 +44,6 @@ class SpiderMain(object):
 
 
 if __name__ == "__main__":
-    root_url = "http://baike.baidu.com/link?url=92QjmNSCiMatDE-Sb65QLtad37q_bmvugik4DziB3VSQ7VeceqRseYIuCyy78_eg_wYbvbe9d7P7ZvgbW1swUaBLXiChLXEplFzOpoN3EEkTlr5UALue9WdbjyAqJEPS"  # 这个URL根据实际情况的url进行修改
+    root_url = "https://baike.baidu.com/item/%E5%9B%BD%E5%BA%86%E8%8A%82/291112?fromtitle=%E5%9B%BD%E5%BA%86&fromid=139153&fr=aladdin"  # 这个URL根据实际情况的url进行修改
     obj_spider = SpiderMain()
     obj_spider.craw(root_url)  # 启动爬虫

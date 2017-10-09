@@ -27,7 +27,7 @@ def test1():
 def test2():
     # dt = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     # print(dt)
-    sched_timer = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    sched_timer = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
     print(sched_timer)
     print(datetime.datetime.now())
     print(datetime.timedelta(minutes=5))
@@ -36,7 +36,7 @@ def test2():
 #    sched_timer = sched_timer + datetime.timedelta(seconds=5)
 
 
-# test2()
+test2()
 
 def run_task(abs_file_path, sched_time):
     is_file_exist = os.path.exists(abs_file_path)  # 判断文件是否存在
@@ -73,5 +73,5 @@ def test3(abs_file_path, sched_timer):
                 flag = 0
 
 
-sched_timer = datetime.datetime(2017, 4, 5, 12, 16, 10)  # 这个时间 需要是未来时
-test3('/Users/changwen/Documents/tcp3.png', sched_timer)
+# sched_timer = datetime.datetime(2017, 4, 5, 12, 16, 10)  # 这个时间 需要是未来时
+# test3('/Users/changwen/Documents/tcp3.png', sched_timer)
