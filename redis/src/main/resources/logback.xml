@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+
+    <property name="LOG_HOME" value="logs"/>
+    <property name="MSG_PATTERN" value="%d{ISO8601} -- %X{request-id} | %msg%n"/>
+
+    <property name="NORMAL_PATTERN"
+              value="%d{ISO8601} [%-16.16thread] %-5level -- %-50.50logger - %M [%4line] -- %X{request-id} | %msg%n"/>
+    <property name="SERIOUS_PATTERN"
+              value="%d{ISO8601} [%-16.16thread] %-5level -- %-60.60class - %M [%4line] -- %X{request-id} | %msg%n"/>
+    <property name="LOG_PATTERN" value="%X{request-id} | %msg%n"/>
+
+    <timestamp key="byDay" datePattern="yyyyMMdd"/>
+    <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/>
+
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder>
+            <pattern>${SERIOUS_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    <appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+        <!--<level>INFO</level>-->
+        <!--<onMatch>ACCEPT</onMatch>-->
+        <!--<onMismatch>DENY</onMismatch>-->
+        <!--</filter>-->
+        <file>${LOG_HOME}/info.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/history/info.%d{yyyyMMdd}.log.gz</fileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${NORMAL_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    <!-- special level -->
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+        <file>${LOG_HOME}/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/history/error.%d{yyyyMMdd}.log.gz</fileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${SERIOUS_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="api_client_log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/api_client.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/history/api_client.%d{yyyyMMdd}.log.gz</fileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${MSG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 记录详细日志(api数据分析) begin -->
+    <appender name="api_log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/api.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/history/api.%d{yyyyMMdd}.log.gz</fileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <logger name="api" level="INFO" additivity="false">
+        <appender-ref ref="api_log"/>
+    </logger>
+
+    <logger name="api_client" level="INFO" additivity="false">
+        <appender-ref ref="api_client_log"/>
+    </logger>
+
+    <logger name="error" level="ERROR" additivity="false">
+        <appender-ref ref="ERROR"/>
+    </logger>
+
+    <!-- for debug , developers. -->
+    <logger name="com.google.code" level="ERROR">
+        <appender-ref ref="ERROR"/>
+    </logger>
+    <logger name="org.springframework" level="INFO">
+        <appender-ref ref="INFO"/>
+    </logger>
+    <logger name="org.apache" level="ERROR">
+        <appender-ref ref="ERROR"/>
+    </logger>
+    <logger name="org.dbunit" level="ERROR">
+        <appender-ref ref="ERROR"/>
+    </logger>
+    <logger name="org.quartz" level="ERROR">
+        <appender-ref ref="ERROR"/>
+    </logger>
+    <logger name="net.sf.ehcache" level="ERROR">
+        <appender-ref ref="ERROR"/>
+    </logger>
+
+    <!-- for debug , developers. end -->
+    <logger name="cn.fastschool" level="INFO">
+        <appender-ref ref="INFO"></appender-ref>
+        <appender-ref ref="STDOUT"></appender-ref>
+        <appender-ref ref="ERROR"></appender-ref>
+    </logger>
+
+    <logger name="com.qcloud" level="INFO">
+        <appender-ref ref="INFO"></appender-ref>
+        <appender-ref ref="STDOUT"></appender-ref>
+        <appender-ref ref="ERROR"></appender-ref>
+    </logger>
+</configuration>

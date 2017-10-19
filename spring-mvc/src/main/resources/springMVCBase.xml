@@ -30,6 +30,4 @@
        –支持使用 @Valid 注解对 JavaBean 实例进行 JSR 303 验证
        –支持使用 @RequestBody 和 @ResponseBody 注解 -->
 
-       <!-- 在实际开发中通常都需配置 mvc:annotation-driven 标签 -->
-       <mvc:annotation-driven/>
 </beans>

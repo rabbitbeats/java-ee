@@ -25,6 +25,8 @@
         <module>sprint-boot</module>
         <module>docker</module>
         <module>python3</module>
+        <module>spring-boot-default</module>
+        <module>redis</module>
     </modules>
 
     <!-- Inherit defaults from Spring Boot -->

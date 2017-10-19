@@ -1,0 +1,45 @@
+debug: true
+server:
+  port: 8724
+spring:
+  application:
+    name:cn.fastschool.homework-web
+  profiles:
+      active: dev
+  datasource:
+    url: jdbc:mysql://mysql.fastschool.cn:4417/fastschool?useUnicode=true&amp;characterEncoding=UTF-8
+    username: fsuser
+    password: fs201604011503xlh
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      max-active: 20
+      initial-size: 1
+      min-idle: 3
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      validation-query: SELECT 'x'
+      max-pool-prepared-statement-per-connection-size: 20
+      pool-prepared-statements: true
+
+logging:
+    level:
+      org.springframework.web: DEBUG
+      cn.fastschool.homework: DEBUG
+#    file: logs/myapp.log
+    config: classpath:logback.xml
+---
+jedis:
+  pool:
+    host: localhost
+    port: 6379
+    timeout: 2000
+    password: foobared
+    config:
+      maxTotal: 256
+      maxIdle: 100
+      maxWaitMillis: 100000

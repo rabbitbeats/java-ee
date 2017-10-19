@@ -2,14 +2,18 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!-- 测试SpringMVC_base时导入-->
-    <!--<import resource="springMVCBase.xml"/>-->
+    <import resource="springMVCBase.xml"/>
 
     <!-- 配置自定扫描的包 自动扫描该包下所有的Bean(例如@Controller) -->
     <context:component-scan base-package="com.changWen.springMVC"/>
+
+    <!-- 在实际开发中通常都需配置 mvc:annotation-driven 标签 -->
+    <mvc:annotation-driven/>
 
     <!--只要定义order，就比没有定义的小，常用的视图解析器放后面-->
     <!-- 配置视图解析器: 如何把 handler 方法返回值解析为实际的物理视图 -->
