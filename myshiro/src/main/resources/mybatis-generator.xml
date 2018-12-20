@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="[e|E]xample$"/>
+            <property name="replaceString" value="Criteria"/>
+        </plugin>
+
+        <!-- 是否去除自动生成的注释  -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+
+        <!-- 数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/test_shiro?useUnicode=true&amp;characterEncoding=utf-8"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+
+        <!-- java类型解析器 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 指定javaBean的生成策略 targetProject：目标工程，就是当前工程-->
+        <javaModelGenerator targetPackage="cn.liucw.shiro.model" targetProject="${entity.target.dir}">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- sql映射生成策略 -->
+        <sqlMapGenerator targetPackage="cn.liucw.shiro.model.mapper" targetProject="${dao.resources.dir}">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 自动生成mapper接口  -->
+        <javaClientGenerator type="ANNOTATEDMAPPER"
+                             targetPackage="cn.liucw.shiro.model.mapper"
+                             targetProject="${entity.target.dir}">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- mvn mybatis-generator:generate -->
+        <table tableName="user" domainObjectName="User"/>
+        <table tableName="user_role_ref" domainObjectName="UserRoleRef"/>
+        <table tableName="role" domainObjectName="Role"/>
+        <table tableName="role_menu_ref" domainObjectName="RoleMenuRef"/>
+        <table tableName="menu" domainObjectName="Menu"/>
+
+
+    </context>
+</generatorConfiguration>

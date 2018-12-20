@@ -27,14 +27,17 @@
         <module>python3</module>
         <module>spring-boot-default</module>
         <module>redis</module>
+        <module>shiro_study</module>
+        <module>myshiro</module>
+        <module>mysql</module>
     </modules>
 
     <!-- Inherit defaults from Spring Boot -->
-    <parent>
+<!--    <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.4.1.RELEASE</version>
-    </parent>
+    </parent>-->
 
     <!-- 代替spring-boot，同时附加了Spring Cloud的依赖 -->
     <!--<parent>-->

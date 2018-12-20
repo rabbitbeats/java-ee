@@ -2,7 +2,7 @@
 FROM java:7
 
 # maintainer指令：指明了当前镜像的作者
-MAINTAINER lcw
+MAINTAINER liucw
 
 # add指令：是从当前工作目录复制文件到镜像目录中去
 ADD  default.jar app.jar

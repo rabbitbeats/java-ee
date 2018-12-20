@@ -1,7 +1,9 @@
+/*
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+*/
 
 /**
  * SpringBootApplication这个注解是Spring Boot核心注解，也是一个组合注解，
@@ -10,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 通过源码可以看出，关闭特定的自定配置应该使用SpringBootApplication注解的exclude参数
  * @author changwen on 2017/7/21.
  */
-@RestController
+/*@RestController
 @SpringBootApplication
 public class MySpringBootApplication {
 
@@ -22,4 +24,4 @@ public class MySpringBootApplication {
     public static void main(String args[]) {
         SpringApplication.run(MySpringBootApplication.class, args);
     }
-}
+}*/
