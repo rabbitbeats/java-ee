@@ -30,7 +30,15 @@
         <module>shiro_study</module>
         <module>myshiro</module>
         <module>mysql</module>
+        <module>request-limit</module>
     </modules>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.1.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
     <!-- Inherit defaults from Spring Boot -->
 <!--    <parent>
